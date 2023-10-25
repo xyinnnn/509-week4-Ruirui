@@ -8,7 +8,8 @@ board = [
     "....#............###..",
     "....##############....",
 ]
-
+if invalid_length(input_board):
+        raise ValueError("input boards length invalid")
 def flood_fill(input_board, old, new, x, y):
     """Returns board with old values replaced with new values
     through flood filling starting from the coordinates x, y
@@ -44,3 +45,8 @@ for row in modified_board:
 modified_board = flood_fill(input_board=board, old=".", new="~", x=1, y=1)
 for row in modified_board:
     print(row)
+def invalid_length(input_board: list[str]) -> bool:
+    for s in input_board:
+        if len(s) != len(input_board[0]):
+            return True
+    return False
